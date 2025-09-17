@@ -1,4 +1,6 @@
-#!/usr/bin/python
+# Original development by Korey McKinley
+# Migrated to Python3 by Seven
+# I've left Korey's comments below.
 
 # Created by Korey McKinley, Senior Security Consulant at LMG Security
 # https://lmgsecurity.com
@@ -42,14 +44,14 @@ def main():
                 valid = re.search('"IfExistsResult":0,', response)
                 invalid = re.search('"IfExistsResult":1,', response)
                 if invalid:
-                    print '%s - INVALID' % email
+                    print('%s - INVALID' % email)
                 if valid and args.output is not None:
-                    print '%s - VALID' % email
+                    print('%s - VALID' % email)
                     with open(args.output, 'a+') as output_file: 
                         output_file.write(email+'\n')
                 else:
                     if valid:
-                        print '%s - VALID' % email
+                        print('%s - VALID' % email)
 
     elif args.email is not None:
         email = args.email
@@ -59,13 +61,13 @@ def main():
         valid = re.search('"IfExistsResult":0', response)
         invalid = re.search('"IfExistsResult":1', response)
         if invalid:
-            print '%s - INVALID' % email
+            print('%s - INVALID' % email)
         if valid and args.output is not None:
-            print '%s - VALID' % email
+            print('%s - VALID' % email)
             with open(args.output, 'w') as output_file:
                 output_file.write(email+'\n')
         else:
             if valid:
-                print '%s - VALID' % email
+                print('%s - VALID' % email)
 if __name__ == "__main__":
     main()
